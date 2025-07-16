@@ -1,0 +1,21 @@
+# Core ML/AI dependencies
+torch>=2.6.0
+gymnasium>=0.29.1
+numpy>=1.26.0
+
+# Configuration and data handling
+pyyaml>=6.0.1
+tqdm>=4.66.0
+
+# Visualization and reporting
+matplotlib>=3.8.0
+seaborn>=0.13.0
+imageio>=2.34.0
+
+# Development and testing
+pytest>=8.2.0
+ruff>=0.4.0
+mypy>=1.10.0
+
+# Additional utilities
+types-PyYAML>=6.0.12.0 

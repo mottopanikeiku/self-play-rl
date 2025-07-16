@@ -1,0 +1,36 @@
+# Tournament Configuration
+# Settings for round-robin tournament between Connect-4 agents
+
+# Number of games to play between each pair of agents
+games_per_pair: 100
+
+# Number of parallel processes to use for tournament
+# Set to null to use all available CPU cores
+num_processes: null
+
+# Elo rating system parameters
+elo_k: 20  # K-factor for Elo updates (higher = more volatile)
+
+# Time limit per move in milliseconds
+time_limit_ms: 500
+
+# Tournament format
+format: "round_robin"  # Only round-robin supported currently
+
+# Logging settings
+log_level: "INFO"
+save_game_logs: false  # Set to true to save detailed game logs
+
+# Agent inclusion/exclusion
+# If specified, only these agents will participate
+# included_agents: ["ppo", "grpo", "minimax", "random"]
+
+# Agents to exclude from tournament  
+# excluded_agents: ["human"]
+
+# Randomization
+random_seed: null  # Set to integer for reproducible results
+
+# Output settings
+output_format: "json"
+save_replays: false  # Set to true to save game replays for analysis 

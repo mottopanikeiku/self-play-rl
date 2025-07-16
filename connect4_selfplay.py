@@ -9,7 +9,7 @@ class Net(nn.Module):
     def __init__(self):
         super().__init__()
         self.body = nn.Sequential(
-            nn.Linear(42, 256), nn.ReLU(),
+            nn.Linear(84, 256), nn.ReLU(),
             nn.Linear(256, 256), nn.ReLU(),
             nn.Linear(256, 7)
         )
@@ -49,10 +49,13 @@ def selfplay_episode(model):
     
     processed_memory = []
     for state, action, player in memory:
-        if final_rewards[player] == 1:
-            reward = 1.0
-        elif final_rewards[player] == -1:
-            reward = -1.0
+        if player in final_rewards:
+            if final_rewards[player] == 1:
+                reward = 1.0
+            elif final_rewards[player] == -1:
+                reward = -1.0
+            else:
+                reward = 0.0
         else:
             reward = 0.0
         

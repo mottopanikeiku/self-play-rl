@@ -1,0 +1,74 @@
+# Training Configuration
+# Hyperparameters and settings for RL agent training
+
+# Global training settings
+num_episodes: 50000
+eval_interval: 1000
+save_interval: 5000
+device: "auto"  # "cuda", "cpu", or "auto"
+
+# Self-Play Policy Gradient (REINFORCE) settings
+selfplay_pg:
+  lr: 3e-4
+  gamma: 0.99
+  entropy_coef: 0.01
+  max_grad_norm: 1.0
+  
+# GRPO (Group Relative Policy Optimization) settings  
+grpo:
+  lr: 1e-3
+  clip_eps: 0.2
+  entropy_coef: 0.01
+  baseline_coef: 1.0
+  group_size: 16
+  max_grad_norm: 1.0
+
+# PPO (Proximal Policy Optimization) settings
+ppo:
+  lr: 3e-4
+  clip_eps: 0.2
+  value_coef: 0.5
+  entropy_coef: 0.01
+  gamma: 0.99
+  gae_lambda: 0.95
+  epochs: 4
+  batch_size: 64
+  max_grad_norm: 1.0
+
+# Neural network architecture
+network:
+  input_size: 42  # 6x7 board flattened
+  hidden_size: 256
+  output_size: 7  # 7 columns
+
+# Environment settings
+environment:
+  reward_win: 10.0
+  reward_loss: -10.0
+  reward_draw: 0.0
+  reward_step: -0.01
+
+# Logging and checkpointing
+logging:
+  log_file: "data/training_logs.jsonl"
+  tensorboard: false  # Set to true to enable TensorBoard logging
+  log_level: "INFO"
+
+# Evaluation settings
+evaluation:
+  eval_episodes: 100
+  eval_opponents: ["random", "minimax"]  # Agents to evaluate against
+  eval_deterministic: true  # Use deterministic policy for evaluation
+
+# Data settings
+data:
+  save_models: true
+  model_dir: "data"
+  checkpoint_format: "{agent}.pt"
+  
+# Training schedule  
+schedule:
+  learning_rate_decay: false
+  decay_rate: 0.95
+  decay_steps: 10000
+  min_lr: 1e-6 
